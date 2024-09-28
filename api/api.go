@@ -7,22 +7,22 @@ import (
 )
 
 type User struct {
-	Id       int    		 `json:"id"`
-	Name     string 		 `json:"name"`
-	Username string 		 `json:"username"`
-	Email    string 		 `json:"email"`
+	ID       int    `json:"id"`
+	Name     string `json:"name"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
 	Address  struct {
-		Street  string 		 `json:"street"`
-		Suite   string 		 `json:"suite"`
-		City    string 		 `json:"city"`
-		Zipcode string 		 `json:"zipcode"`
+		Street  string `json:"street"`
+		Suite   string `json:"suite"`
+		City    string `json:"city"`
+		Zipcode string `json:"zipcode"`
 		Geo     struct {
-			Lat string 			 `json:"lat"`
-			Lng string 			 `json:"lng"`
-		} 								 `json:"geo"`
-	} 								 	 `json:"address"`
-	Phone    string 		 `json:"phone"`
-	Website  string 		 `json:"website"`
+			Lat string `json:"lat"`
+			Lng string `json:"lng"`
+		} `json:"geo"`
+	} `json:"address"`
+	Phone   string `json:"phone"`
+	Website string `json:"website"`
 	Company struct {
 		Name        string `json:"name"`
 		CatchPhrase string `json:"catchPhrase"`
@@ -31,45 +31,45 @@ type User struct {
 }
 
 type Todo struct {
-	UserID   			int    	`json:"userId"`
-	Id       			int    	`json:"id"`
-	Title    			string 	`json:"title"`
-	Completed     bool 		`json:"completed"`
+	UserID    int    `json:"userId"`
+	ID        int    `json:"id"`
+	Title     string `json:"title"`
+	Completed bool   `json:"completed"`
 }
 
 type Post struct {
-	UserID   int    		 `json:"userId"`
-	Id       int    		 `json:"id"`
-	Title    string 		 `json:"title"`
-	Body     string 		 `json:"body"`
+	UserID int    `json:"userId"`
+	ID     int    `json:"id"`
+	Title  string `json:"title"`
+	Body   string `json:"body"`
 }
 
 type PostComment struct {
-	PostID		int 			 `json:"postId"`
-	Id 				int 			 `json:"id"`
-	Name			string 		 `json:"name"`
-	Email			string 		 `json:"email"`
-	Body			string 		 `json:"body"`
+	PostID int    `json:"postId"`
+	ID     int    `json:"id"`
+	Name   string `json:"name"`
+	Email  string `json:"email"`
+	Body   string `json:"body"`
 }
 
 type Album struct {
-	UserID 		int				 `json:"userId"`
-	Id 				int				 `json:"id"`
-	Title 		string		 `json:"title"`
+	UserID int    `json:"userId"`
+	ID     int    `json:"id"`
+	Title  string `json:"title"`
 }
 
 type Photo struct {
-	AlbumID   		int    		 `json:"albumId"`
-	Id       			int    		 `json:"id"`
-	Title    			string 		 `json:"title"`
-	URL     			string 		 `json:"url"`
-	ThumbnailUrl  string		 `json:"thumbnailUrl"`
+	AlbumID      int    `json:"albumId"`
+	ID           int    `json:"id"`
+	Title        string `json:"title"`
+	URL          string `json:"url"`
+	ThumbnailURL string `json:"thumbnailUrl"`
 }
-
 
 // ---------- USERS ----------  //
 func GetUsers() ([]User, error) {
 	var users []User
+
 	response, err := http.Get("https://jsonplaceholder.typicode.com/users")
 	if err != nil {
 		return users, err
@@ -154,7 +154,6 @@ func GetUserTodos(id string) ([]Todo, error) {
 	return todos, err
 }
 
-
 // ---------- POSTS ----------  //
 func GetPosts() ([]Post, error) {
 	var posts []Post
@@ -204,7 +203,7 @@ func GetPostComments(postId string) ([]PostComment, error) {
 	var postComments []PostComment
 
 	apiURL := fmt.Sprintf("https://jsonplaceholder.typicode.com/posts/%s/comments", postId)
-	
+
 	response, err := http.Get(apiURL)
 	if err != nil {
 		return postComments, err
@@ -222,7 +221,6 @@ func GetPostComments(postId string) ([]PostComment, error) {
 
 	return postComments, nil
 }
-
 
 // ---------- TODOS ----------  //
 func GetTodos() ([]Todo, error) {
@@ -267,7 +265,6 @@ func GetTodo(id string) (Todo, error) {
 	return todo, err
 }
 
-
 // ---------- ALBUMS ----------  //
 func GetAlbums() ([]Album, error) {
 	var albums []Album
@@ -311,7 +308,6 @@ func GetAlbum(id string) (Album, error) {
 	return album, nil
 }
 
-
 func GetAlbumPhotos(id string) ([]Photo, error) {
 	var photos []Photo
 
@@ -333,7 +329,6 @@ func GetAlbumPhotos(id string) ([]Photo, error) {
 
 	return photos, err
 }
-
 
 // ---------- PHOTOS ----------  //
 func GetPhotos() ([]Photo, error) {

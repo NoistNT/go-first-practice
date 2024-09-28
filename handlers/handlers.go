@@ -86,7 +86,6 @@ func GetUserTodos(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
-
 // ---------- POSTS ----------  //
 func GetPosts(w http.ResponseWriter, r *http.Request) {
 	posts, err := api.GetPosts()
@@ -145,7 +144,6 @@ func GetPostComments(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
-
 // ---------- POSTS ----------  //
 func GetTodos(w http.ResponseWriter, r *http.Request) {
 	todos, err := api.GetTodos()
@@ -176,12 +174,11 @@ func GetTodo(w http.ResponseWriter, r *http.Request) {
 	jsonResponse, err := json.MarshalIndent(todo, "", "  ")
 	if err != nil {
 		http.Error(w, "Failed to Marhsal Todo JSON", http.StatusInternalServerError)
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(jsonResponse)
 }
-
 
 // ---------- ALBUMS ----------  //
 func GetAlbums(w http.ResponseWriter, r *http.Request) {
@@ -240,7 +237,6 @@ func GetAlbumPhotos(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(jsonResponse)
 }
-
 
 // ---------- PHOTOS ----------  //
 func GetPhotos(w http.ResponseWriter, r *http.Request) {
